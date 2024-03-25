@@ -43,7 +43,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -103,7 +102,6 @@ fun TemperaturePreview() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TemperatureContent(modifier: Modifier) {
     var temp1 by rememberSaveable { mutableStateOf("") }
@@ -111,16 +109,17 @@ fun TemperatureContent(modifier: Modifier) {
 
     var tempResult by rememberSaveable { mutableStateOf("") }
 
-    val context = LocalContext.current
-
     val items = listOf(
         stringResource(id = R.string.temp_celcius),
         stringResource(id = R.string.temp_fahrenheit),
         stringResource(id = R.string.temp_kelvin),
         stringResource(id = R.string.temp_rankine),
     )
+
     var expanded by rememberSaveable { mutableStateOf(false) }
+    var expanded2 by rememberSaveable { mutableStateOf(false) }
     var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var selectedIndex2 by rememberSaveable { mutableIntStateOf(0) }
 
     Column (
         modifier = modifier
@@ -184,11 +183,63 @@ fun TemperatureContent(modifier: Modifier) {
         )
         Row (
             modifier = Modifier
-                .padding(top = 6.dp)
+                .padding(top = 16.dp)
                 .offset(x = 60.dp)
         ) {
             Button(
-                onClick = {  },
+                onClick = {
+                    temp1Error = (temp1 == "")
+                    if(temp1Error) return@Button
+
+                    if (selectedIndex == 0 && selectedIndex2 == 0) {
+                        tempResult = temp1
+                    }
+                    if (selectedIndex == 0 && selectedIndex2 == 1) {
+                        tempResult = celsiusToFahrenheit(temp1.toFloat())
+                    }
+                    if (selectedIndex == 0 && selectedIndex2 == 2) {
+                        tempResult = celsiusToKelvin(temp1.toFloat())
+                    }
+                    if (selectedIndex == 0 && selectedIndex2 == 3) {
+                        tempResult = celsiusToRankine(temp1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 0) {
+                        tempResult = fahrenheitToCelsius(temp1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 1) {
+                        tempResult = temp1
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 2) {
+                        tempResult = fahrenheitToKelvin(temp1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 3) {
+                        tempResult = fahrenheitToRankine(temp1.toFloat())
+                    }
+                    if (selectedIndex == 2 && selectedIndex2 == 0) {
+                        tempResult = kelvinToCelsius(temp1.toFloat())
+                    }
+                    if (selectedIndex == 2 && selectedIndex2 == 1) {
+                        tempResult = kelvinToFahrenheit(temp1.toFloat())
+                    }
+                    if (selectedIndex == 2 && selectedIndex2 == 2) {
+                        tempResult = temp1
+                    }
+                    if (selectedIndex == 2 && selectedIndex2 == 3) {
+                        tempResult = kelvinToRankine(temp1.toFloat())
+                    }
+                    if (selectedIndex == 3 && selectedIndex2 == 0) {
+                        tempResult = rankineToCelsius(temp1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 1) {
+                        tempResult = rankineToFahrenheit(temp1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 2) {
+                        tempResult = rankineToKelvin(temp1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 3) {
+                        tempResult = temp1
+                    }
+                },
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp),
                 contentPadding = PaddingValues(horizontal = 26.dp, vertical = 16.dp)
             ) {
@@ -202,11 +253,43 @@ fun TemperatureContent(modifier: Modifier) {
                 Text(text = stringResource(id = R.string.reset))
             }
         }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 10.dp)
+        ) {
+            Row(
+                modifier = Modifier.clickable(onClick = { expanded2 = true }),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(text = items[selectedIndex2])
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(Icons.Outlined.ArrowDropDown, contentDescription = "Expand dropdown")
+            }
+            DropdownMenu(
+                expanded = expanded2,
+                onDismissRequest = { expanded2 = false }
+            ) {
+                items.forEachIndexed { index, item ->
+                    DropdownMenuItem(
+                        text = { Text(text = item) },
+                        onClick = { selectedIndex2 = index
+                            expanded2 = false },
+                        leadingIcon = {
+                            Icon(
+                                Icons.Outlined.Edit,
+                                contentDescription = null
+                            )
+                        })
+                }
+            }
+        }
         OutlinedTextField(
             value = tempResult,
             readOnly = true,
             onValueChange = {  },
-            label = { Text(text = "")},
+            label = { Text(text = "") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
@@ -228,4 +311,52 @@ fun ErrorHint(isError : Boolean){
     if (isError) {
         Text(text = stringResource(id = R.string.invalid_input))
     }
+}
+
+private fun celsiusToFahrenheit(temp1: Float): String {
+    return (temp1 * 1.8 + 32).toString()
+}
+
+private fun fahrenheitToCelsius(temp1: Float): String {
+    return ((temp1 - 32) / 1.8).toString()
+}
+
+private fun celsiusToKelvin(temp1: Float): String {
+    return (temp1 + 273.15).toString()
+}
+
+private fun kelvinToCelsius(temp1: Float): String {
+    return (temp1 - 273.15).toString()
+}
+
+private fun fahrenheitToKelvin(temp1: Float): String {
+    return ((temp1 + 459.67) / 1.8).toString()
+}
+
+private fun kelvinToFahrenheit(temp1: Float): String {
+    return (temp1 * 1.8 - 459.67).toString()
+}
+
+private fun celsiusToRankine(temp1: Float): String {
+    return (temp1 * 1.8 + 491.67).toString()
+}
+
+private fun fahrenheitToRankine(temp1: Float): String {
+    return (temp1 + 459.67).toString()
+}
+
+private fun kelvinToRankine(temp1: Float): String {
+    return (temp1 * 1.8).toString()
+}
+
+private fun rankineToCelsius(temp1: Float): String {
+    return ((temp1 - 491.67) * (5/9)).toString()
+}
+
+private fun rankineToFahrenheit(temp1: Float): String {
+    return (temp1 - 459.67).toString()
+}
+
+private fun rankineToKelvin(temp1: Float): String {
+    return (temp1 * (5/9)).toString()
 }
