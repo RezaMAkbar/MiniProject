@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">General Calculator</string>
+    <string name="main_menu">Please choose from the available options</string>
+    <string name="app_desc">This application is a general calculator application that can calculate
+     area and perimeter of flat shapes, temperature conversion, distance, weight.\n\nThis application
+     created for Assessment 1 Mobpro Mini Project.\n\nCopyright © 2024 Reza M. Akbar.\nAll rights reserved.</string>
+    <string name="luas_kel_bangunDatar">Area and Perimeter of Flat Shapes</string>
+    <string name="konversi_suhu">Temperature Conversion</string>
+    <string name="konversi_panjang">Length Conversion</string>
+    <string name="konversi_berat">Mass/weight Conversion</string>
+    <string name="back">Back</string>
+    <string name="calc_temp_top">Temperature Conversion</string>
+    <string name="calc_temp_main">Please select the temperature type and enter the number you want to calculate.</string>
+    <string name="placeholder_value">Please insert a number.</string>
+    <string name="invalid_input">Field Can not be empty.</string>
+    <string name="convert">Convert</string>
+    <string name="reset">Reset</string>
+    <string name="temp_celcius" translatable="false">Celsius</string>
+    <string name="temp_fahrenheit" translatable="false">Fahrenheit</string>
+    <string name="temp_kelvin" translatable="false">Kelvin</string>
+    <string name="temp_rankine" translatable="false">Rankine</string>
+</resources>

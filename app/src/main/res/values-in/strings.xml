@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kalkulator Umum</string>
+    <string name="main_menu">Silahkan pilih dari pilihan yang tersedia.</string>
+    <string name="app_desc">Aplikasi ini adalah sebuah aplikasi kalkulator umum yang bisa menghitung
+    luas dan keliling bangun datar, konversi suhu, jarak, berat.\n\nAplikasi ini
+    dibuat untuk Assessment 1 Mobpro Mini Project.\n\nCopyright © 2024 Reza M. Akbar.\nAll rights reserved.</string>
+    <string name="luas_kel_bangunDatar">Luas dan Keliling Bangun Datar</string>
+    <string name="konversi_suhu">Konversi Suhu</string>
+    <string name="konversi_panjang">Konversi Panjang</string>
+    <string name="konversi_berat">Konversi Berat/Massa</string>
+    <string name="back">Back</string>
+    <string name="reset">Reset</string>
+    <string name="convert">Konversi</string>
+    <string name="calc_temp_top">Konversi Suhu</string>
+    <string name="calc_temp_main">Silahkan pilih tipe suhu dan masukkan angka yang ingin di hitung.</string>
+    <string name="placeholder_value">Silahkan masukan angka.</string>
+    <string name="invalid_input">Field tidak Boleh Kosong.</string>
+</resources>
