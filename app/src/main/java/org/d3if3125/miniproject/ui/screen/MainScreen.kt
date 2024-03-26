@@ -55,7 +55,7 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
         Button(
             onClick = { navController.navigate(Screen.Temp.route) },
             modifier = Modifier.padding(top = 25.dp),
-            contentPadding = PaddingValues(horizontal = 85.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(horizontal = 65.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.konversi_suhu))
         }
@@ -64,7 +64,7 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
 
             },
             modifier = Modifier.padding(top = 15.dp),
-            contentPadding = PaddingValues(horizontal = 75.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(horizontal = 82.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.konversi_panjang))
         }
@@ -73,7 +73,7 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
 
             },
             modifier = Modifier.padding(top = 15.dp),
-            contentPadding = PaddingValues(horizontal = 60.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(horizontal = 62.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.konversi_berat))
         }
@@ -82,7 +82,7 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
 
             },
             modifier = Modifier.padding(top = 15.dp),
-            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(horizontal = 34.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.luas_kel_bangunDatar))
         }

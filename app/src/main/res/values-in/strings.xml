@@ -13,7 +13,8 @@
     <string name="reset">Reset</string>
     <string name="convert">Konversi</string>
     <string name="calc_temp_top">Konversi Suhu</string>
-    <string name="calc_temp_main">Silahkan pilih tipe suhu dan masukkan angka yang ingin di hitung.</string>
+    <string name="calc_temp_main">Silahkan pilih tipe suhu dan masukkan angka yang ingin di hitung,
+        ingat bahwa hasilnya akan di bulatkan ke atas dan bilangan integer terdekat.</string>
     <string name="placeholder_value">Silahkan masukan angka.</string>
     <string name="invalid_input">Field tidak Boleh Kosong.</string>
 </resources>

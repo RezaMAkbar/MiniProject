@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.List
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -54,6 +55,8 @@ import androidx.navigation.compose.rememberNavController
 import org.d3if3125.miniproject.R
 import org.d3if3125.miniproject.navigation.Screen
 import org.d3if3125.miniproject.ui.theme.MiniProjectTheme
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,14 +81,53 @@ fun TemperatureScreen(navController: NavHostController) {
                     titleContentColor = Color.White
                 ),
                 actions = {
-                    IconButton(
-                        onClick = { navController.navigate(Screen.About.route) }
+                    val items = listOf(
+                        stringResource(id = R.string.home),
+                        stringResource(id = R.string.konversi_panjang),
+                        stringResource(id = R.string.konversi_berat),
+                        stringResource(id = R.string.luas_kel_bangunDatar),
+                    )
+                    val screens = listOf(
+                        Screen.Home,
+                       // Screen.LengthConversion,
+                        //Screen.WeightConversion,
+                       // Screen.AreaAndPerimeter,
+                    )
+
+                    var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
+                    var selectedIndexTopMenu by rememberSaveable { mutableIntStateOf(0) }
+                    Row(
+                        modifier = Modifier.clickable(onClick = { expandedTopMenu = true }),
+                        horizontalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.Info,
+                            imageVector = Icons.Outlined.List,
                             contentDescription = stringResource(id = R.string.app_desc),
                             tint = Color.White
                         )
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                    }
+
+                    DropdownMenu(
+                        expanded = expandedTopMenu,
+                        onDismissRequest = { expandedTopMenu = false }
+                    ) {
+                        items.forEachIndexed { index, item ->
+                            DropdownMenuItem(
+                                text = { Text(text = item) },
+                                onClick = { selectedIndexTopMenu = index
+                                    expandedTopMenu = false
+                                    navController.navigate(screens[index].route)
+                                          },
+                                leadingIcon = {
+                                    Icon(
+                                        Icons.Outlined.Edit,
+                                        contentDescription = null
+                                    )
+                                })
+                        }
                     }
                 }
             )
@@ -138,7 +180,7 @@ fun TemperatureContent(modifier: Modifier) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 36.dp)
+                .padding(top = 26.dp)
         ) {
             Row(
                 modifier = Modifier.clickable(onClick = { expanded = true }),
@@ -230,13 +272,13 @@ fun TemperatureContent(modifier: Modifier) {
                     if (selectedIndex == 3 && selectedIndex2 == 0) {
                         tempResult = rankineToCelsius(temp1.toFloat())
                     }
-                    if (selectedIndex == 1 && selectedIndex2 == 1) {
+                    if (selectedIndex == 3 && selectedIndex2 == 1) {
                         tempResult = rankineToFahrenheit(temp1.toFloat())
                     }
-                    if (selectedIndex == 1 && selectedIndex2 == 2) {
+                    if (selectedIndex == 3 && selectedIndex2 == 2) {
                         tempResult = rankineToKelvin(temp1.toFloat())
                     }
-                    if (selectedIndex == 1 && selectedIndex2 == 3) {
+                    if (selectedIndex == 3 && selectedIndex2 == 3) {
                         tempResult = temp1
                     }
                 },
@@ -326,7 +368,7 @@ private fun celsiusToKelvin(temp1: Float): String {
 }
 
 private fun kelvinToCelsius(temp1: Float): String {
-    return (temp1 - 273.15).toString()
+    return ((temp1 - 273.15)).toString()
 }
 
 private fun fahrenheitToKelvin(temp1: Float): String {
@@ -350,7 +392,7 @@ private fun kelvinToRankine(temp1: Float): String {
 }
 
 private fun rankineToCelsius(temp1: Float): String {
-    return ((temp1 - 491.67) * (5/9)).toString()
+    return ((temp1 - 491.67) / 1.8).toString()
 }
 
 private fun rankineToFahrenheit(temp1: Float): String {
@@ -358,5 +400,5 @@ private fun rankineToFahrenheit(temp1: Float): String {
 }
 
 private fun rankineToKelvin(temp1: Float): String {
-    return (temp1 * (5/9)).toString()
+    return (temp1 / 1.8).toString()
 }

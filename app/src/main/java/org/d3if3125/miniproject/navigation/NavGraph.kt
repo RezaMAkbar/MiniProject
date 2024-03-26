@@ -23,5 +23,8 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         composable(route = Screen.About.route) {
             TemperatureScreen(navController)
         }
+        composable(route = Screen.Weight.route) {
+          //  WeightScreen(navController)
+        }
     }
 }
