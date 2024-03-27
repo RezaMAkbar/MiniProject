@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.d3if3125.miniproject.ui.screen.MainScreen
 import org.d3if3125.miniproject.ui.screen.TemperatureScreen
+import org.d3if3125.miniproject.ui.screen.WeightScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
@@ -21,10 +22,10 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
             TemperatureScreen(navController)
         }
         composable(route = Screen.About.route) {
-            TemperatureScreen(navController)
+            //TemperatureScreen(navController)
         }
         composable(route = Screen.Weight.route) {
-          //  WeightScreen(navController)
+            WeightScreen(navController)
         }
     }
 }

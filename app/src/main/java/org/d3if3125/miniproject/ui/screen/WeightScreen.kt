@@ -57,7 +57,7 @@ import org.d3if3125.miniproject.ui.theme.MiniProjectTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TemperatureScreen(navController: NavHostController) {
+fun WeightScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -71,7 +71,7 @@ fun TemperatureScreen(navController: NavHostController) {
                     }
                 },
                 title = {
-                    Text(text = stringResource(id = R.string.calc_temp_top))
+                    Text(text = stringResource(id = R.string.calc_weight_top))
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = colorResource(id = R.color.light_purple),
@@ -80,15 +80,15 @@ fun TemperatureScreen(navController: NavHostController) {
                 actions = {
                     val items = listOf(
                         stringResource(id = R.string.home),
+                        stringResource(id = R.string.konversi_suhu),
                         stringResource(id = R.string.konversi_panjang),
-                        stringResource(id = R.string.konversi_berat),
                         stringResource(id = R.string.luas_kel_bangunDatar),
                     )
                     val screens = listOf(
                         Screen.Home,
+                        Screen.Temp,
                         Screen.Length,
-                        Screen.Weight,
-                       // Screen.AreaAndPerimeter,
+                        // Screen.AreaAndPerimeter,
                     )
 
                     var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
@@ -130,30 +130,31 @@ fun TemperatureScreen(navController: NavHostController) {
                 }
             )
         }
-    ) { padding -> TemperatureContent(Modifier.padding(padding)) }
+    ) { padding -> WeightContent(Modifier.padding(padding)) }
 }
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
-fun TemperaturePreview() {
+fun WeightPreview() {
     MiniProjectTheme {
-        TemperatureScreen(rememberNavController())
+        WeightScreen(rememberNavController())
     }
 }
 
 @Composable
-fun TemperatureContent(modifier: Modifier) {
-    var temp1 by rememberSaveable { mutableStateOf("") }
-    var temp1Error by rememberSaveable { mutableStateOf(false) }
+fun WeightContent(modifier: Modifier) {
+    var weight1 by rememberSaveable { mutableStateOf("") }
+    var weight1Error by rememberSaveable { mutableStateOf(false) }
 
-    var tempResult by rememberSaveable { mutableStateOf("") }
+    var weightResult by rememberSaveable { mutableStateOf("") }
 
     val items = listOf(
-        stringResource(id = R.string.temp_celcius),
-        stringResource(id = R.string.temp_fahrenheit),
-        stringResource(id = R.string.temp_kelvin),
-        stringResource(id = R.string.temp_rankine),
+        stringResource(id = R.string.weight_gram),
+        stringResource(id = R.string.weight_kgram),
+        stringResource(id = R.string.weight_pound),
+        stringResource(id = R.string.weight_ton),
+        stringResource(id = R.string.weight_us_ton)
     )
 
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -170,7 +171,7 @@ fun TemperatureContent(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(id = R.string.calc_temp_main),
+            text = stringResource(id = R.string.calc_weight_main),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.fillMaxWidth()
         )
@@ -208,11 +209,11 @@ fun TemperatureContent(modifier: Modifier) {
         }
 
         OutlinedTextField(
-            value = temp1,
-            onValueChange = { temp1 = it },
-            label = { Text(text = "From")},
-            trailingIcon = { IconPickerTemp(temp1Error, "") },
-            supportingText = { ErrorHintTemp(temp1Error) },
+            value = weight1,
+            onValueChange = { weight1 = it },
+            label = { Text(text = stringResource(id = R.string.from)) },
+            trailingIcon = { IconPickerWeight(weight1Error, "") },
+            supportingText = { ErrorHintWeight(weight1Error) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -228,56 +229,83 @@ fun TemperatureContent(modifier: Modifier) {
         ) {
             Button(
                 onClick = {
-                    temp1Error = (temp1 == "")
-                    if(temp1Error) return@Button
+                    weight1Error = (weight1 == "")
+                    if(weight1Error) return@Button
 
                     if (selectedIndex == 0 && selectedIndex2 == 0) {
-                        tempResult = temp1
+                        weightResult = weight1
                     }
                     if (selectedIndex == 0 && selectedIndex2 == 1) {
-                        tempResult = celsiusToFahrenheit(temp1.toFloat())
+                        weightResult = gramToKilogram(weight1.toFloat())
                     }
                     if (selectedIndex == 0 && selectedIndex2 == 2) {
-                        tempResult = celsiusToKelvin(temp1.toFloat())
+                        weightResult = gramToPound(weight1.toFloat())
                     }
                     if (selectedIndex == 0 && selectedIndex2 == 3) {
-                        tempResult = celsiusToRankine(temp1.toFloat())
+                        weightResult = gramToTonne(weight1.toFloat())
+                    }
+                    if (selectedIndex == 0 && selectedIndex2 == 4) {
+                        weightResult = gramToShortTon(weight1.toFloat())
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 0) {
-                        tempResult = fahrenheitToCelsius(temp1.toFloat())
+                        weightResult = kilogramToGram(weight1.toFloat())
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 1) {
-                        tempResult = temp1
+                        weightResult = weight1
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 2) {
-                        tempResult = fahrenheitToKelvin(temp1.toFloat())
+                        weightResult = kilogramToPound(weight1.toFloat())
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 3) {
-                        tempResult = fahrenheitToRankine(temp1.toFloat())
+                        weightResult = kilogramToTonne(weight1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 4) {
+                        weightResult = kilogramToShortTon(weight1.toFloat())
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 0) {
-                        tempResult = kelvinToCelsius(temp1.toFloat())
+                        weightResult = poundToGram(weight1.toFloat())
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 1) {
-                        tempResult = kelvinToFahrenheit(temp1.toFloat())
+                        weightResult = poundToKilogram(weight1.toFloat())
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 2) {
-                        tempResult = temp1
+                        weightResult = weight1
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 3) {
-                        tempResult = kelvinToRankine(temp1.toFloat())
+                        weightResult = poundToTonne(weight1.toFloat())
+                    }
+                    if (selectedIndex == 2 && selectedIndex2 == 4) {
+                        weightResult = poundToShortTon(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 0) {
-                        tempResult = rankineToCelsius(temp1.toFloat())
+                        weightResult = tonneToGram(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 1) {
-                        tempResult = rankineToFahrenheit(temp1.toFloat())
+                        weightResult = tonneToKilogram(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 2) {
-                        tempResult = rankineToKelvin(temp1.toFloat())
+                        weightResult = tonneToPound(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 3) {
-                        tempResult = temp1
+                        weightResult = weight1
+                    }
+                    if (selectedIndex == 3 && selectedIndex2 == 4) {
+                        weightResult = tonneToShortTon(weight1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 0) {
+                        weightResult = shortTonToGram(weight1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 1) {
+                        weightResult = shortTonToKilogram(weight1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 2) {
+                        weightResult = shortTonToPound(weight1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 3) {
+                        weightResult = shortTonToTonne(weight1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 4) {
+                        weightResult = weight1
                     }
                 },
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp),
@@ -286,7 +314,7 @@ fun TemperatureContent(modifier: Modifier) {
                 Text(text = stringResource(id = R.string.convert))
             }
             Button(
-                onClick = { temp1 = ""; tempResult = "" },
+                onClick = { weight1 = ""; weightResult = "" },
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp, start = 15.dp),
                 contentPadding = PaddingValues(horizontal = 26.dp, vertical = 16.dp)
             ) {
@@ -326,7 +354,7 @@ fun TemperatureContent(modifier: Modifier) {
             }
         }
         OutlinedTextField(
-            value = tempResult,
+            value = weightResult,
             readOnly = true,
             onValueChange = {  },
             label = { Text(text = stringResource(id = R.string.to)) },
@@ -338,7 +366,7 @@ fun TemperatureContent(modifier: Modifier) {
 }
 
 @Composable
-fun IconPickerTemp(isError : Boolean, unit : String){
+fun IconPickerWeight(isError : Boolean, unit : String){
     if (isError) {
         Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
     } else {
@@ -347,56 +375,88 @@ fun IconPickerTemp(isError : Boolean, unit : String){
 }
 
 @Composable
-fun ErrorHintTemp(isError : Boolean){
+fun ErrorHintWeight(isError : Boolean){
     if (isError) {
         Text(text = stringResource(id = R.string.invalid_input))
     }
 }
 
-private fun celsiusToFahrenheit(temp1: Float): String {
-    return (temp1 * 1.8 + 32).toString()
+private fun gramToKilogram(weight1: Float): String {
+    return (weight1 / 1000).toString()
 }
 
-private fun fahrenheitToCelsius(temp1: Float): String {
-    return ((temp1 - 32) / 1.8).toString()
+private fun gramToPound(weight1: Float): String {
+    return (weight1 / 453.6).toString()
 }
 
-private fun celsiusToKelvin(temp1: Float): String {
-    return (temp1 + 273.15).toString()
+private fun gramToTonne(weight1: Float): String {
+    return (weight1 / 1000000).toString()
 }
 
-private fun kelvinToCelsius(temp1: Float): String {
-    return ((temp1 - 273.15)).toString()
+private fun gramToShortTon(weight1: Float): String {
+    return (weight1 / 907200).toString()
 }
 
-private fun fahrenheitToKelvin(temp1: Float): String {
-    return ((temp1 + 459.67) / 1.8).toString()
+private fun kilogramToGram(weight1: Float): String {
+    return (weight1 * 1000).toString()
 }
 
-private fun kelvinToFahrenheit(temp1: Float): String {
-    return (temp1 * 1.8 - 459.67).toString()
+private fun kilogramToPound(weight1: Float): String {
+    return (weight1 * 2.205).toString()
 }
 
-private fun celsiusToRankine(temp1: Float): String {
-    return (temp1 * 1.8 + 491.67).toString()
+private fun kilogramToTonne(weight1: Float): String {
+    return (weight1 / 1000).toString()
 }
 
-private fun fahrenheitToRankine(temp1: Float): String {
-    return (temp1 + 459.67).toString()
+private fun kilogramToShortTon(weight1: Float): String {
+    return (weight1 / 907.2).toString()
 }
 
-private fun kelvinToRankine(temp1: Float): String {
-    return (temp1 * 1.8).toString()
+private fun poundToGram(weight1: Float): String {
+    return (weight1 * 453.6).toString()
 }
 
-private fun rankineToCelsius(temp1: Float): String {
-    return ((temp1 - 491.67) / 1.8).toString()
+private fun poundToKilogram(weight1: Float): String {
+    return (weight1 / 2.205).toString()
 }
 
-private fun rankineToFahrenheit(temp1: Float): String {
-    return (temp1 - 459.67).toString()
+private fun poundToTonne(weight1: Float): String {
+    return (weight1 / 2205).toString()
 }
 
-private fun rankineToKelvin(temp1: Float): String {
-    return (temp1 / 1.8).toString()
+private fun poundToShortTon(weight1: Float): String {
+    return (weight1 / 2000).toString()
+}
+
+private fun tonneToGram(weight1: Float): String {
+    return (weight1 * 1000000).toString()
+}
+
+private fun tonneToKilogram(weight1: Float): String {
+    return (weight1 * 1000).toString()
+}
+
+private fun tonneToPound(weight1: Float): String {
+    return (weight1 * 2205).toString()
+}
+
+private fun tonneToShortTon(weight1: Float): String {
+    return (weight1 * 1.102).toString()
+}
+
+private fun shortTonToGram(weight1: Float): String {
+    return (weight1 * 907200).toString()
+}
+
+private fun shortTonToKilogram(weight1: Float): String {
+    return (weight1 * 907.2).toString()
+}
+
+private fun shortTonToPound(weight1: Float): String {
+    return (weight1 * 2000).toString()
+}
+
+private fun shortTonToTonne(weight1: Float): String {
+    return (weight1 / 1.102).toString()
 }

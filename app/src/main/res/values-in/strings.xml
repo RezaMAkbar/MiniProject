@@ -13,8 +13,12 @@
     <string name="reset">Reset</string>
     <string name="convert">Konversi</string>
     <string name="calc_temp_top">Konversi Suhu</string>
-    <string name="calc_temp_main">Silahkan pilih tipe suhu dan masukkan angka yang ingin di hitung,
-        ingat bahwa hasilnya akan di bulatkan ke atas dan bilangan integer terdekat.</string>
+    <string name="calc_temp_main">Silahkan pilih tipe suhu (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
     <string name="placeholder_value">Silahkan masukan angka.</string>
     <string name="invalid_input">Field tidak Boleh Kosong.</string>
+    <string name="home">Home</string>
+    <string name="from">Dari</string>
+    <string name="to">Ke</string>
+    <string name="calc_weight_main">Silahkan pilih tipe berat (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
+    <string name="calc_weight_top">Konversi Berat</string>
 </resources>

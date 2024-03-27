@@ -69,9 +69,7 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
             Text(text = stringResource(id = R.string.konversi_panjang))
         }
         Button(
-            onClick = {
-
-            },
+            onClick = { navController.navigate(Screen.Weight.route) },
             modifier = Modifier.padding(top = 15.dp),
             contentPadding = PaddingValues(horizontal = 62.dp, vertical = 16.dp)
         ) {

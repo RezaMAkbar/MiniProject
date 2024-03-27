@@ -11,15 +11,23 @@
     <string name="home">Home</string>
     <string name="back">Back</string>
     <string name="calc_temp_top">Temperature Conversion</string>
-    <string name="calc_temp_main">Please select the temperature type and enter the number you want to calculate,
-        remember that the result will be rounded up and to the nearest integer.</string>
+    <string name="calc_weight_top">Weight Conversion</string>
+    <string name="calc_temp_main">Please select the temperature type (From) and (To) and enter the number you want to calculate.</string>
     <string name="placeholder_value">Please insert a number.</string>
     <string name="invalid_input">Field Can not be empty.</string>
     <string name="convert">Convert</string>
     <string name="reset">Reset</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
     <string name="temp_celcius" translatable="false">Celsius</string>
     <string name="temp_fahrenheit" translatable="false">Fahrenheit</string>
     <string name="temp_kelvin" translatable="false">Kelvin</string>
     <string name="temp_rankine" translatable="false">Rankine</string>
     <string name="menu_" translatable="false">Rankine</string>
+    <string name="calc_weight_main">Please select the weight type (From) and (To) and enter the number you want to calculate.</string>
+    <string name="weight_gram" translatable="false">Gram</string>
+    <string name="weight_kgram" translatable="false">Kilogram</string>
+    <string name="weight_pound" translatable="false">Pound</string>
+    <string name="weight_ton" translatable="false">Tonne</string>
+    <string name="weight_us_ton" translatable="false">Short Ton (US Ton)</string>
 </resources>
