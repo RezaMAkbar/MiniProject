@@ -4,7 +4,8 @@
     <string name="app_desc">This application is a general calculator application that can calculate
      area and perimeter of flat shapes, temperature conversion, distance, weight.\n\nThis application
      created for Assessment 1 Mobpro Mini Project.\n\nCopyright © 2024 Reza M. Akbar.\nAll rights reserved.</string>
-    <string name="luas_kel_bangunDatar">Area and Perimeter of Flat Shapes</string>
+    <string name="kalkulator">Calculator</string>
+    <string name="konversi_kecepatan">Speed Conversion</string>
     <string name="konversi_suhu">Temperature Conversion</string>
     <string name="konversi_panjang">Length Conversion</string>
     <string name="konversi_berat">Mass/weight Conversion</string>
@@ -12,22 +13,37 @@
     <string name="back">Back</string>
     <string name="calc_temp_top">Temperature Conversion</string>
     <string name="calc_weight_top">Weight Conversion</string>
+    <string name="calc_length_top">Length Conversion</string>
     <string name="calc_temp_main">Please select the temperature type (From) and (To) and enter the number you want to calculate.</string>
+    <string name="calc_weight_main">Please select the weight type (From) and (To) and enter the number you want to calculate.</string>
+    <string name="calc_length_main">Please select the length type (From) and (To) and enter the number you want to calculate.</string>
     <string name="placeholder_value">Please insert a number.</string>
     <string name="invalid_input">Field Can not be empty.</string>
     <string name="convert">Convert</string>
     <string name="reset">Reset</string>
     <string name="from">From</string>
     <string name="to">To</string>
-    <string name="temp_celcius" translatable="false">Celsius</string>
-    <string name="temp_fahrenheit" translatable="false">Fahrenheit</string>
-    <string name="temp_kelvin" translatable="false">Kelvin</string>
-    <string name="temp_rankine" translatable="false">Rankine</string>
-    <string name="menu_" translatable="false">Rankine</string>
-    <string name="calc_weight_main">Please select the weight type (From) and (To) and enter the number you want to calculate.</string>
-    <string name="weight_gram" translatable="false">Gram</string>
-    <string name="weight_kgram" translatable="false">Kilogram</string>
-    <string name="weight_pound" translatable="false">Pound</string>
-    <string name="weight_ton" translatable="false">Tonne</string>
-    <string name="weight_us_ton" translatable="false">Short Ton (US Ton)</string>
+    <string name="temp_celcius">Celsius</string>
+    <string name="temp_fahrenheit">Fahrenheit</string>
+    <string name="temp_kelvin">Kelvin</string>
+    <string name="temp_rankine">Rankine</string>
+    <string name="menu_">Rankine</string>
+    <string name="weight_gram">Gram</string>
+    <string name="weight_kgram">Kilogram</string>
+    <string name="weight_pound">Pound</string>
+    <string name="weight_ton">Tonne</string>
+    <string name="weight_us_ton">Short Ton (US Ton)</string>
+    <string name="length_metre">Metre</string>
+    <string name="length_km">Kilometre</string>
+    <string name="length_cm">Centimetre</string>
+    <string name="length_mm">Milimetre</string>
+    <string name="length_mile">Mile</string>
+    <string name="length_yard">Yard</string>
+    <string name="length_foot">Foot</string>
+    <string name="length_inch">Inch</string>
+    <string name="speed_metreps">metre/second</string>
+    <string name="speed_mileps">mile/second</string>
+    <string name="speed_kph">kilometre/hour</string>
+    <string name="speed_fps">foot/second</string>
+    <string name="speed_knot">knot</string>
 </resources>

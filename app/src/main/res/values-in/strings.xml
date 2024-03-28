@@ -5,7 +5,7 @@
     <string name="app_desc">Aplikasi ini adalah sebuah aplikasi kalkulator umum yang bisa menghitung
     luas dan keliling bangun datar, konversi suhu, jarak, berat.\n\nAplikasi ini
     dibuat untuk Assessment 1 Mobpro Mini Project.\n\nCopyright © 2024 Reza M. Akbar.\nAll rights reserved.</string>
-    <string name="luas_kel_bangunDatar">Luas dan Keliling Bangun Datar</string>
+    <string name="konversi_kecepatan">Konversi Kecepatan</string>
     <string name="konversi_suhu">Konversi Suhu</string>
     <string name="konversi_panjang">Konversi Panjang</string>
     <string name="konversi_berat">Konversi Berat/Massa</string>
@@ -14,11 +14,37 @@
     <string name="convert">Konversi</string>
     <string name="calc_temp_top">Konversi Suhu</string>
     <string name="calc_temp_main">Silahkan pilih tipe suhu (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
+    <string name="calc_weight_main">Silahkan pilih tipe berat (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
+    <string name="calc_length_main">Silahkan pilih tipe panjang (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
     <string name="placeholder_value">Silahkan masukan angka.</string>
     <string name="invalid_input">Field tidak Boleh Kosong.</string>
     <string name="home">Home</string>
     <string name="from">Dari</string>
     <string name="to">Ke</string>
-    <string name="calc_weight_main">Silahkan pilih tipe berat (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
     <string name="calc_weight_top">Konversi Berat</string>
+    <string name="calc_length_top">Konversi Panjang</string>
+    <string name="kalkulator">Kalkulator</string>
+    <string name="temp_celcius">Celsius</string>
+    <string name="temp_fahrenheit">Fahrenheit</string>
+    <string name="temp_kelvin">Kelvin</string>
+    <string name="temp_rankine">Rankine</string>
+    <string name="menu_">Rankine</string>
+    <string name="weight_gram">Gram</string>
+    <string name="weight_kgram">Kilogram</string>
+    <string name="weight_pound">Pound</string>
+    <string name="weight_ton">Tonne</string>
+    <string name="weight_us_ton">Short Ton (US Ton)</string>
+    <string name="speed_metreps">meter/detik</string>
+    <string name="speed_mileps">mile/detik</string>
+    <string name="speed_kph">kilometer/jam</string>
+    <string name="speed_fps">kaki/detik</string>
+    <string name="speed_knot">knot</string>
+    <string name="length_metre">Meter</string>
+    <string name="length_km">Kilometer</string>
+    <string name="length_cm">Centimeter</string>
+    <string name="length_mile">Mile</string>
+    <string name="length_foot">Kaki</string>
+    <string name="length_inch">Inci</string>
+    <string name="length_mm">Milimeter</string>
+    <string name="length_yard">Halaman</string>
 </resources>

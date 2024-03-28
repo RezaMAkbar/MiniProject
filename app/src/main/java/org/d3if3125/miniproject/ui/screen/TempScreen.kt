@@ -82,7 +82,7 @@ fun TemperatureScreen(navController: NavHostController) {
                         stringResource(id = R.string.home),
                         stringResource(id = R.string.konversi_panjang),
                         stringResource(id = R.string.konversi_berat),
-                        stringResource(id = R.string.luas_kel_bangunDatar),
+                        stringResource(id = R.string.konversi_kecepatan),
                     )
                     val screens = listOf(
                         Screen.Home,
@@ -118,13 +118,8 @@ fun TemperatureScreen(navController: NavHostController) {
                                     selectedIndexTopMenu = index
                                     expandedTopMenu = false
                                     navController.navigate(screens[index].route)
-                                },
-                                leadingIcon = {
-                                    Icon(
-                                        Icons.Outlined.Edit,
-                                        contentDescription = null
-                                    )
-                                })
+                                }
+                            )
                         }
                     }
                 }

@@ -82,7 +82,7 @@ fun WeightScreen(navController: NavHostController) {
                         stringResource(id = R.string.home),
                         stringResource(id = R.string.konversi_suhu),
                         stringResource(id = R.string.konversi_panjang),
-                        stringResource(id = R.string.luas_kel_bangunDatar),
+                        stringResource(id = R.string.konversi_kecepatan),
                     )
                     val screens = listOf(
                         Screen.Home,
@@ -153,8 +153,8 @@ fun WeightContent(modifier: Modifier) {
         stringResource(id = R.string.weight_gram),
         stringResource(id = R.string.weight_kgram),
         stringResource(id = R.string.weight_pound),
+        stringResource(id = R.string.weight_us_ton),
         stringResource(id = R.string.weight_ton),
-        stringResource(id = R.string.weight_us_ton)
     )
 
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -198,12 +198,7 @@ fun WeightContent(modifier: Modifier) {
                         text = { Text(text = item) },
                         onClick = { selectedIndex = index
                             expanded = false },
-                        leadingIcon = {
-                            Icon(
-                                Icons.Outlined.Edit,
-                                contentDescription = null
-                            )
-                        })
+                        )
                 }
             }
         }
@@ -278,31 +273,31 @@ fun WeightContent(modifier: Modifier) {
                         weightResult = poundToShortTon(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 0) {
-                        weightResult = tonneToGram(weight1.toFloat())
+                        weightResult = shortTonToGram(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 1) {
-                        weightResult = tonneToKilogram(weight1.toFloat())
+                        weightResult = shortTonToKilogram(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 2) {
-                        weightResult = tonneToPound(weight1.toFloat())
+                        weightResult = shortTonToPound(weight1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 3) {
                         weightResult = weight1
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 4) {
-                        weightResult = tonneToShortTon(weight1.toFloat())
+                        weightResult = shortTonToTonne(weight1.toFloat())
                     }
                     if (selectedIndex == 4 && selectedIndex2 == 0) {
-                        weightResult = shortTonToGram(weight1.toFloat())
+                        weightResult = tonneToGram(weight1.toFloat())
                     }
                     if (selectedIndex == 4 && selectedIndex2 == 1) {
-                        weightResult = shortTonToKilogram(weight1.toFloat())
+                        weightResult = tonneToKilogram(weight1.toFloat())
                     }
                     if (selectedIndex == 4 && selectedIndex2 == 2) {
-                        weightResult = shortTonToPound(weight1.toFloat())
+                        weightResult = tonneToPound(weight1.toFloat())
                     }
                     if (selectedIndex == 4 && selectedIndex2 == 3) {
-                        weightResult = shortTonToTonne(weight1.toFloat())
+                        weightResult = tonneToShortTon(weight1.toFloat())
                     }
                     if (selectedIndex == 4 && selectedIndex2 == 4) {
                         weightResult = weight1
@@ -343,13 +338,8 @@ fun WeightContent(modifier: Modifier) {
                     DropdownMenuItem(
                         text = { Text(text = item) },
                         onClick = { selectedIndex2 = index
-                            expanded2 = false },
-                        leadingIcon = {
-                            Icon(
-                                Icons.Outlined.Edit,
-                                contentDescription = null
-                            )
-                        })
+                            expanded2 = false }
+                    )
                 }
             }
         }
