@@ -53,15 +53,8 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
             modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 16.dp),
         )
         Button(
-            onClick = { navController.navigate(Screen.Calculator.route) },
-            modifier = Modifier.padding(top = 25.dp),
-            contentPadding = PaddingValues(horizontal = 108.dp, vertical = 16.dp)
-        ) {
-            Text(text = stringResource(id = R.string.kalkulator))
-        }
-        Button(
             onClick = { navController.navigate(Screen.Temp.route) },
-            modifier = Modifier.padding(top = 15.dp),
+            modifier = Modifier.padding(top = 35.dp),
             contentPadding = PaddingValues(horizontal = 65.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.konversi_suhu))
@@ -81,9 +74,7 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
             Text(text = stringResource(id = R.string.konversi_berat))
         }
         Button(
-            onClick = {
-
-            },
+            onClick = { navController.navigate(Screen.Speed.route) },
             modifier = Modifier.padding(top = 15.dp),
             contentPadding = PaddingValues(horizontal = 84.dp, vertical = 16.dp)
         ) {

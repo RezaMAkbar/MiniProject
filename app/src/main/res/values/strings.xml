@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">General Calculator</string>
+    <string name="app_name">Conversion Calculator</string>
+    <string name="about_app">About App</string>
     <string name="main_menu">Please choose from the available options</string>
-    <string name="app_desc">This application is a general calculator application that can calculate
-     area and perimeter of flat shapes, temperature conversion, distance, weight.\n\nThis application
+    <string name="app_desc">This application is a conversion calculator application that can calculate
+        temperature conversion, distance, weight, and speed.\n\nThis application
      created for Assessment 1 Mobpro Mini Project.\n\nCopyright © 2024 Reza M. Akbar.\nAll rights reserved.</string>
     <string name="kalkulator">Calculator</string>
     <string name="konversi_kecepatan">Speed Conversion</string>
@@ -14,9 +15,11 @@
     <string name="calc_temp_top">Temperature Conversion</string>
     <string name="calc_weight_top">Weight Conversion</string>
     <string name="calc_length_top">Length Conversion</string>
+    <string name="calc_speed_top">Speed Conversion</string>
     <string name="calc_temp_main">Please select the temperature type (From) and (To) and enter the number you want to calculate.</string>
     <string name="calc_weight_main">Please select the weight type (From) and (To) and enter the number you want to calculate.</string>
     <string name="calc_length_main">Please select the length type (From) and (To) and enter the number you want to calculate.</string>
+    <string name="calc_speed_main">Please select the speed type (From) and (To) and enter the number you want to calculate.</string>
     <string name="placeholder_value">Please insert a number.</string>
     <string name="invalid_input">Field Can not be empty.</string>
     <string name="convert">Convert</string>
@@ -42,7 +45,7 @@
     <string name="length_foot">Foot</string>
     <string name="length_inch">Inch</string>
     <string name="speed_metreps">metre/second</string>
-    <string name="speed_mileps">mile/second</string>
+    <string name="speed_mileph">mile/hour</string>
     <string name="speed_kph">kilometre/hour</string>
     <string name="speed_fps">foot/second</string>
     <string name="speed_knot">knot</string>

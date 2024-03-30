@@ -20,8 +20,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.ArrowDropDown
-import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.List
+import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -44,6 +46,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -83,12 +86,14 @@ fun WeightScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_suhu),
                         stringResource(id = R.string.konversi_panjang),
                         stringResource(id = R.string.konversi_kecepatan),
+                        stringResource(id = R.string.about_app),
                     )
                     val screens = listOf(
                         Screen.Home,
                         Screen.Temp,
                         Screen.Length,
-                        // Screen.AreaAndPerimeter,
+                        Screen.Speed,
+                        Screen.About,
                     )
 
                     var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
@@ -120,10 +125,34 @@ fun WeightScreen(navController: NavHostController) {
                                     navController.navigate(screens[index].route)
                                 },
                                 leadingIcon = {
-                                    Icon(
-                                        Icons.Outlined.Edit,
-                                        contentDescription = null
-                                    )
+                                    when (index) {
+                                        0 -> Icon(
+                                            Icons.Outlined.Home,
+                                            contentDescription = null
+                                        )
+                                        1 -> Icon(
+                                            painter = painterResource(R.drawable.temp),
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        2 -> Icon(
+                                            painter = painterResource(R.drawable.length),
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        3 -> Icon(
+                                            painter = painterResource(R.drawable.speed),
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        4 -> Icon(
+                                            imageVector = Icons.Outlined.Info,
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+
+                                        else -> Icon(Icons.Outlined.Warning, contentDescription = "Missing Icon")
+                                    }
                                 })
                         }
                     }

@@ -5,8 +5,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.d3if3125.miniproject.ui.screen.AboutScreen
 import org.d3if3125.miniproject.ui.screen.LengthScreen
 import org.d3if3125.miniproject.ui.screen.MainScreen
+import org.d3if3125.miniproject.ui.screen.SpeedScreen
 import org.d3if3125.miniproject.ui.screen.TemperatureScreen
 import org.d3if3125.miniproject.ui.screen.WeightScreen
 
@@ -28,8 +30,11 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         composable(route = Screen.Weight.route) {
             WeightScreen(navController)
         }
-        composable(route = Screen.Calculator.route) {
-      //      CalculatorScreen(navController)
+        composable(route = Screen.Speed.route) {
+            SpeedScreen(navController)
+        }
+        composable(route = Screen.About.route) {
+            AboutScreen(navController)
         }
     }
 }

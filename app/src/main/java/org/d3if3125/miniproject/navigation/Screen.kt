@@ -6,5 +6,5 @@ sealed class Screen (val route : String) {
     data object Temp: Screen("tempScreen")
     data object Weight: Screen("weightScreen")
     data object Length: Screen("lengthScreen")
-    data object Calculator: Screen("calculatorScreen")
+    data object Speed: Screen("speedScreen")
 }

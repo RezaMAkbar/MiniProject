@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Kalkulator Umum</string>
+    <string name="app_name">Kalkulator Konversi</string>
     <string name="main_menu">Silahkan pilih dari pilihan yang tersedia.</string>
-    <string name="app_desc">Aplikasi ini adalah sebuah aplikasi kalkulator umum yang bisa menghitung
-    luas dan keliling bangun datar, konversi suhu, jarak, berat.\n\nAplikasi ini
+    <string name="app_desc">Aplikasi ini adalah sebuah aplikasi kalkulator konversi yang bisa menghitung
+     konversi suhu, jarak, berat, dan kecepatan.\n\nAplikasi ini
     dibuat untuk Assessment 1 Mobpro Mini Project.\n\nCopyright © 2024 Reza M. Akbar.\nAll rights reserved.</string>
     <string name="konversi_kecepatan">Konversi Kecepatan</string>
     <string name="konversi_suhu">Konversi Suhu</string>
@@ -35,7 +35,7 @@
     <string name="weight_ton">Tonne</string>
     <string name="weight_us_ton">Short Ton (US Ton)</string>
     <string name="speed_metreps">meter/detik</string>
-    <string name="speed_mileps">mile/detik</string>
+    <string name="speed_mileph">mile/jam</string>
     <string name="speed_kph">kilometer/jam</string>
     <string name="speed_fps">kaki/detik</string>
     <string name="speed_knot">knot</string>
@@ -47,4 +47,7 @@
     <string name="length_inch">Inci</string>
     <string name="length_mm">Milimeter</string>
     <string name="length_yard">Halaman</string>
+    <string name="calc_speed_top">Konversi Kecepatan</string>
+    <string name="calc_speed_main">Silahkan pilih tipe kecepatan (Dari) dan (Ke) dan masukkan angka yang ingin di hitung.</string>
+    <string name="about_app">Tentang Aplikasi</string>
 </resources>

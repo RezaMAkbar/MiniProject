@@ -60,7 +60,7 @@ import org.d3if3125.miniproject.ui.theme.MiniProjectTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TemperatureScreen(navController: NavHostController) {
+fun SpeedScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -74,7 +74,7 @@ fun TemperatureScreen(navController: NavHostController) {
                     }
                 },
                 title = {
-                    Text(text = stringResource(id = R.string.calc_temp_top))
+                    Text(text = stringResource(id = R.string.calc_speed_top))
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = colorResource(id = R.color.light_purple),
@@ -83,16 +83,16 @@ fun TemperatureScreen(navController: NavHostController) {
                 actions = {
                     val items = listOf(
                         stringResource(id = R.string.home),
-                        stringResource(id = R.string.konversi_panjang),
+                        stringResource(id = R.string.konversi_suhu),
                         stringResource(id = R.string.konversi_berat),
-                        stringResource(id = R.string.konversi_kecepatan),
+                        stringResource(id = R.string.konversi_panjang),
                         stringResource(id = R.string.about_app),
                     )
                     val screens = listOf(
                         Screen.Home,
-                        Screen.Length,
+                        Screen.Temp,
                         Screen.Weight,
-                        Screen.Speed,
+                        Screen.Length,
                         Screen.About,
                     )
 
@@ -131,7 +131,7 @@ fun TemperatureScreen(navController: NavHostController) {
                                             contentDescription = null
                                         )
                                         1 -> Icon(
-                                            painter = painterResource(R.drawable.length),
+                                            painter = painterResource(R.drawable.temp),
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
@@ -141,7 +141,7 @@ fun TemperatureScreen(navController: NavHostController) {
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
                                         3 -> Icon(
-                                            painter = painterResource(R.drawable.speed),
+                                            painter = painterResource(R.drawable.length),
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
@@ -159,30 +159,31 @@ fun TemperatureScreen(navController: NavHostController) {
                 }
             )
         }
-    ) { padding -> TemperatureContent(Modifier.padding(padding)) }
+    ) { padding -> SpeedContent(Modifier.padding(padding)) }
 }
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
-fun TemperaturePreview() {
+fun SpeedPreview() {
     MiniProjectTheme {
-        TemperatureScreen(rememberNavController())
+        SpeedScreen(rememberNavController())
     }
 }
 
 @Composable
-fun TemperatureContent(modifier: Modifier) {
-    var temp1 by rememberSaveable { mutableStateOf("") }
-    var temp1Error by rememberSaveable { mutableStateOf(false) }
+fun SpeedContent(modifier: Modifier) {
+    var speed1 by rememberSaveable { mutableStateOf("") }
+    var speed1Error by rememberSaveable { mutableStateOf(false) }
 
-    var tempResult by rememberSaveable { mutableStateOf("") }
+    var speedResult by rememberSaveable { mutableStateOf("") }
 
     val items = listOf(
-        stringResource(id = R.string.temp_celcius),
-        stringResource(id = R.string.temp_fahrenheit),
-        stringResource(id = R.string.temp_kelvin),
-        stringResource(id = R.string.temp_rankine),
+        stringResource(id = R.string.speed_metreps),
+        stringResource(id = R.string.speed_kph),
+        stringResource(id = R.string.speed_mileph),
+        stringResource(id = R.string.speed_fps),
+        stringResource(id = R.string.speed_knot),
     )
 
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -199,7 +200,7 @@ fun TemperatureContent(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(id = R.string.calc_temp_main),
+            text = stringResource(id = R.string.calc_speed_main),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.fillMaxWidth()
         )
@@ -226,17 +227,17 @@ fun TemperatureContent(modifier: Modifier) {
                         text = { Text(text = item) },
                         onClick = { selectedIndex = index
                             expanded = false },
-                        )
+                    )
                 }
             }
         }
 
         OutlinedTextField(
-            value = temp1,
-            onValueChange = { temp1 = it },
-            label = { Text(text = "From")},
-            trailingIcon = { IconPickerTemp(temp1Error, "") },
-            supportingText = { ErrorHintTemp(temp1Error) },
+            value = speed1,
+            onValueChange = { speed1 = it },
+            label = { Text(text = stringResource(id = R.string.from)) },
+            trailingIcon = { IconPickerSpeed(speed1Error, "") },
+            supportingText = { ErrorHintSpeed(speed1Error) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -252,56 +253,83 @@ fun TemperatureContent(modifier: Modifier) {
         ) {
             Button(
                 onClick = {
-                    temp1Error = (temp1 == "")
-                    if(temp1Error) return@Button
+                    speed1Error = (speed1 == "")
+                    if(speed1Error) return@Button
 
                     if (selectedIndex == 0 && selectedIndex2 == 0) {
-                        tempResult = temp1
+                        speedResult = speed1
                     }
                     if (selectedIndex == 0 && selectedIndex2 == 1) {
-                        tempResult = celsiusToFahrenheit(temp1.toFloat())
+                        speedResult = meterpsToKmph(speed1.toFloat())
                     }
                     if (selectedIndex == 0 && selectedIndex2 == 2) {
-                        tempResult = celsiusToKelvin(temp1.toFloat())
+                        speedResult = meterpsTomileph(speed1.toFloat())
                     }
                     if (selectedIndex == 0 && selectedIndex2 == 3) {
-                        tempResult = celsiusToRankine(temp1.toFloat())
+                        speedResult = meterpsToFtps(speed1.toFloat())
+                    }
+                    if (selectedIndex == 0 && selectedIndex2 == 4) {
+                        speedResult = meterpsToKnot(speed1.toFloat())
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 0) {
-                        tempResult = fahrenheitToCelsius(temp1.toFloat())
+                        speedResult = kmphToMeterps(speed1.toFloat())
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 1) {
-                        tempResult = temp1
+                        speedResult = speed1
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 2) {
-                        tempResult = fahrenheitToKelvin(temp1.toFloat())
+                        speedResult = kmphTomileph(speed1.toFloat())
                     }
                     if (selectedIndex == 1 && selectedIndex2 == 3) {
-                        tempResult = fahrenheitToRankine(temp1.toFloat())
+                        speedResult = kmphToFtps(speed1.toFloat())
+                    }
+                    if (selectedIndex == 1 && selectedIndex2 == 4) {
+                        speedResult = kmphToKnot(speed1.toFloat())
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 0) {
-                        tempResult = kelvinToCelsius(temp1.toFloat())
+                        speedResult = milephToMeterps(speed1.toFloat())
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 1) {
-                        tempResult = kelvinToFahrenheit(temp1.toFloat())
+                        speedResult = milephToKmph(speed1.toFloat())
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 2) {
-                        tempResult = temp1
+                        speedResult = speed1
                     }
                     if (selectedIndex == 2 && selectedIndex2 == 3) {
-                        tempResult = kelvinToRankine(temp1.toFloat())
+                        speedResult = milephToFtps(speed1.toFloat())
+                    }
+                    if (selectedIndex == 2 && selectedIndex2 == 4) {
+                        speedResult = milephToKnot(speed1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 0) {
-                        tempResult = rankineToCelsius(temp1.toFloat())
+                        speedResult = ftpsToMeterps(speed1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 1) {
-                        tempResult = rankineToFahrenheit(temp1.toFloat())
+                        speedResult = ftpsToKmph(speed1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 2) {
-                        tempResult = rankineToKelvin(temp1.toFloat())
+                        speedResult = ftpsTomileph(speed1.toFloat())
                     }
                     if (selectedIndex == 3 && selectedIndex2 == 3) {
-                        tempResult = temp1
+                        speedResult = speed1
+                    }
+                    if (selectedIndex == 3 && selectedIndex2 == 4) {
+                        speedResult = ftpsToKnot(speed1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 0) {
+                        speedResult = knotToMeterps(speed1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 1) {
+                        speedResult = knotToKmph(speed1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 2) {
+                        speedResult = knotTomileph(speed1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 3) {
+                        speedResult = knotToFtps(speed1.toFloat())
+                    }
+                    if (selectedIndex == 4 && selectedIndex2 == 4) {
+                        speedResult = speed1
                     }
                 },
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp),
@@ -310,7 +338,7 @@ fun TemperatureContent(modifier: Modifier) {
                 Text(text = stringResource(id = R.string.convert))
             }
             Button(
-                onClick = { temp1 = ""; tempResult = "" },
+                onClick = { speed1 = ""; speedResult = "" },
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp, start = 15.dp),
                 contentPadding = PaddingValues(horizontal = 26.dp, vertical = 16.dp)
             ) {
@@ -339,13 +367,13 @@ fun TemperatureContent(modifier: Modifier) {
                     DropdownMenuItem(
                         text = { Text(text = item) },
                         onClick = { selectedIndex2 = index
-                            expanded2 = false },
-                        )
+                            expanded2 = false }
+                    )
                 }
             }
         }
         OutlinedTextField(
-            value = tempResult,
+            value = speedResult,
             readOnly = true,
             onValueChange = {  },
             label = { Text(text = stringResource(id = R.string.to)) },
@@ -357,7 +385,7 @@ fun TemperatureContent(modifier: Modifier) {
 }
 
 @Composable
-fun IconPickerTemp(isError : Boolean, unit : String){
+fun IconPickerSpeed(isError : Boolean, unit : String){
     if (isError) {
         Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
     } else {
@@ -366,56 +394,88 @@ fun IconPickerTemp(isError : Boolean, unit : String){
 }
 
 @Composable
-fun ErrorHintTemp(isError : Boolean){
+fun ErrorHintSpeed(isError : Boolean){
     if (isError) {
         Text(text = stringResource(id = R.string.invalid_input))
     }
 }
 
-private fun celsiusToFahrenheit(temp1: Float): String {
-    return (temp1 * 1.8 + 32).toString()
+private fun meterpsToKmph(speed1: Float): String {
+    return (speed1 * 3.6).toString()
 }
 
-private fun fahrenheitToCelsius(temp1: Float): String {
-    return ((temp1 - 32) / 1.8).toString()
+private fun meterpsTomileph(speed1: Float): String {
+    return (speed1 * 2.237).toString()
 }
 
-private fun celsiusToKelvin(temp1: Float): String {
-    return (temp1 + 273.15).toString()
+private fun meterpsToFtps(speed1: Float): String {
+    return (speed1 * 3.281).toString()
 }
 
-private fun kelvinToCelsius(temp1: Float): String {
-    return ((temp1 - 273.15)).toString()
+private fun meterpsToKnot(speed1: Float): String {
+    return (speed1 * 1.944).toString()
 }
 
-private fun fahrenheitToKelvin(temp1: Float): String {
-    return ((temp1 + 459.67) / 1.8).toString()
+private fun kmphToMeterps(speed1: Float): String {
+    return (speed1 / 3.6).toString()
 }
 
-private fun kelvinToFahrenheit(temp1: Float): String {
-    return (temp1 * 1.8 - 459.67).toString()
+private fun kmphTomileph(speed1: Float): String {
+    return (speed1 / 1.609).toString()
 }
 
-private fun celsiusToRankine(temp1: Float): String {
-    return (temp1 * 1.8 + 491.67).toString()
+private fun kmphToFtps(speed1: Float): String {
+    return (speed1 / 1.097).toString()
 }
 
-private fun fahrenheitToRankine(temp1: Float): String {
-    return (temp1 + 459.67).toString()
+private fun kmphToKnot(speed1: Float): String {
+    return (speed1 / 1.852).toString()
 }
 
-private fun kelvinToRankine(temp1: Float): String {
-    return (temp1 * 1.8).toString()
+private fun milephToKmph(speed1: Float): String {
+    return (speed1 * 1.609).toString()
 }
 
-private fun rankineToCelsius(temp1: Float): String {
-    return ((temp1 - 491.67) / 1.8).toString()
+private fun milephToMeterps(speed1: Float): String {
+    return (speed1 / 2.237).toString()
 }
 
-private fun rankineToFahrenheit(temp1: Float): String {
-    return (temp1 - 459.67).toString()
+private fun milephToFtps(speed1: Float): String {
+    return (speed1 * 1.467).toString()
 }
 
-private fun rankineToKelvin(temp1: Float): String {
-    return (temp1 / 1.8).toString()
+private fun milephToKnot(speed1: Float): String {
+    return (speed1 / 1.151).toString()
+}
+
+private fun ftpsToKmph(speed1: Float): String {
+    return (speed1 * 1.097).toString()
+}
+
+private fun ftpsToMeterps(speed1: Float): String {
+    return (speed1 / 3.281).toString()
+}
+
+private fun ftpsTomileph(speed1: Float): String {
+    return (speed1 / 1.467).toString()
+}
+
+private fun ftpsToKnot(speed1: Float): String {
+    return (speed1 / 1.688).toString()
+}
+
+private fun knotToKmph(speed1: Float): String {
+    return (speed1 * 1.852).toString()
+}
+
+private fun knotToMeterps(speed1: Float): String {
+    return (speed1 / 1.944).toString()
+}
+
+private fun knotTomileph(speed1: Float): String {
+    return (speed1 * 1.151).toString()
+}
+
+private fun knotToFtps(speed1: Float): String {
+    return (speed1 * 1.688).toString()
 }

@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
@@ -85,12 +86,14 @@ fun LengthScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_suhu),
                         stringResource(id = R.string.konversi_berat),
                         stringResource(id = R.string.konversi_kecepatan),
+                        stringResource(id = R.string.about_app),
                     )
                     val screens = listOf(
                         Screen.Home,
                         Screen.Temp,
                         Screen.Weight,
-                        // Screen.AreaAndPerimeter,
+                        Screen.Speed,
+                        Screen.About,
                     )
 
                     var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
@@ -139,6 +142,11 @@ fun LengthScreen(navController: NavHostController) {
                                         )
                                         3 -> Icon(
                                             painter = painterResource(R.drawable.speed),
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        4 -> Icon(
+                                            imageVector = Icons.Outlined.Info,
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
