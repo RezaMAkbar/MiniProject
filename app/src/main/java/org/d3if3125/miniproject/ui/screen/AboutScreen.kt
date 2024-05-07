@@ -69,6 +69,7 @@ fun AboutScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_berat),
                         stringResource(id = R.string.konversi_panjang),
                         stringResource(id = R.string.konversi_kecepatan),
+                        stringResource(id = R.string.bmi),
                     )
                     val screens = listOf(
                         Screen.Home,
@@ -76,6 +77,7 @@ fun AboutScreen(navController: NavHostController) {
                         Screen.Weight,
                         Screen.Length,
                         Screen.Speed,
+                        Screen.Bmi
                     )
 
                     var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
@@ -130,6 +132,10 @@ fun AboutScreen(navController: NavHostController) {
                                         4 -> Icon(
                                             painter = painterResource(R.drawable.speed),
                                             contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        5 -> Text(
+                                            text = stringResource(R.string.bmi),
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
 

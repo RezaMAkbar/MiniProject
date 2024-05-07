@@ -16,12 +16,16 @@
     <string name="calc_weight_top">Weight Conversion</string>
     <string name="calc_length_top">Length Conversion</string>
     <string name="calc_speed_top">Speed Conversion</string>
+    <string name="bmi_main_menu">BMI Calculator</string>
+    <string name="bmi">BMI</string>
     <string name="calc_temp_main">Please select the temperature type (From) and (To) and enter the number you want to calculate.</string>
     <string name="calc_weight_main">Please select the weight type (From) and (To) and enter the number you want to calculate.</string>
     <string name="calc_length_main">Please select the length type (From) and (To) and enter the number you want to calculate.</string>
     <string name="calc_speed_main">Please select the speed type (From) and (To) and enter the number you want to calculate.</string>
     <string name="placeholder_value">Please insert a number.</string>
-    <string name="invalid_input">Field Can not be empty.</string>
+    <string name="invalid_input">Field cannot be empty.</string>
+    <string name="invalid_input_bmi_imp">Field cannot be zero except inches or empty.</string>
+    <string name="invalid_input_bmi_metric">Field cannot be empty.</string>
     <string name="convert">Convert</string>
     <string name="reset">Reset</string>
     <string name="from">From</string>
@@ -49,4 +53,28 @@
     <string name="speed_kph">kilometre/hour</string>
     <string name="speed_fps">foot/second</string>
     <string name="speed_knot">knot</string>
+    <string name="bmi_about">Measure your Body Mass Index (BMI) and get its recommended action
+        based on the result, applies to adult men and women.</string>
+    <string name="weight_bmi">Weight</string>
+    <string name="weight_bmi_imperial">Pounds</string>
+    <string name="weight_bmi_metric">Kilograms</string>
+    <string name="imperial">Imperial</string>
+    <string name="metric">Metric</string>
+    <string name="height_bmi">Height</string>
+    <string name="height_bmi_imperial_feet">Feet</string>
+    <string name="height_bmi_imperial_inch">Inches</string>
+    <string name="height_bmi_metric">Centimeters</string>
+    <string name="calculate">Calculate</string>
+    <string name="bmi_res">BMI: %1$.2f</string>
+    <string name="bmi_underweight">Underweight</string>
+    <string name="bmi_norm_weight">Normal</string>
+    <string name="bmi_ovr_weight">Overweight</string>
+    <string name="bmi_obese_weight">Obese</string>
+    <string name="bmi_underweight_txt">You are underweight. It is important to reach
+        a healthier weight. Consider consulting a healthcare provider for guidance.</string>
+    <string name="bmi_normalweight_txt">You have a normal weight. Maintain a balanced diet and regular exercise.</string>
+    <string name="bmi_overweight_txt">You are overweight. It is important to manage your weight to
+        reduce the risk of health problems. Consider consulting a healthcare provider for guidance.</string>
+    <string name="bmi_obese_txt">You are obese. It is important to manage your weight to
+        reduce the risk of health problems. Consider consulting a healthcare provider for guidance.</string>
 </resources>

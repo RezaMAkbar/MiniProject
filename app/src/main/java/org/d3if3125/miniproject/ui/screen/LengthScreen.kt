@@ -86,6 +86,7 @@ fun LengthScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_suhu),
                         stringResource(id = R.string.konversi_berat),
                         stringResource(id = R.string.konversi_kecepatan),
+                        stringResource(id = R.string.bmi),
                         stringResource(id = R.string.about_app),
                     )
                     val screens = listOf(
@@ -93,7 +94,8 @@ fun LengthScreen(navController: NavHostController) {
                         Screen.Temp,
                         Screen.Weight,
                         Screen.Speed,
-                        Screen.About,
+                        Screen.Bmi,
+                        Screen.About
                     )
 
                     var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
@@ -145,7 +147,11 @@ fun LengthScreen(navController: NavHostController) {
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
-                                        4 -> Icon(
+                                        4 -> Text(
+                                            text = stringResource(R.string.bmi),
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        5 -> Icon(
                                             imageVector = Icons.Outlined.Info,
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)

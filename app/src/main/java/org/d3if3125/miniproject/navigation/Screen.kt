@@ -7,4 +7,5 @@ sealed class Screen (val route : String) {
     data object Weight: Screen("weightScreen")
     data object Length: Screen("lengthScreen")
     data object Speed: Screen("speedScreen")
+    data object Bmi: Screen("bmiScreen")
 }
