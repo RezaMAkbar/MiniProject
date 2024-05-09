@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Conversion Calculator</string>
+    <string name="app_name">Conversion Calculator and Note!</string>
     <string name="about_app">About App</string>
     <string name="main_menu">Please choose from the available options</string>
     <string name="app_desc">This application is a conversion calculator application that can calculate
@@ -17,6 +17,7 @@
     <string name="calc_length_top">Length Conversion</string>
     <string name="calc_speed_top">Speed Conversion</string>
     <string name="bmi_main_menu">BMI Calculator</string>
+    <string name="note_main_menu">Note</string>
     <string name="bmi">BMI</string>
     <string name="calc_temp_main">Please select the temperature type (From) and (To) and enter the number you want to calculate.</string>
     <string name="calc_weight_main">Please select the weight type (From) and (To) and enter the number you want to calculate.</string>
@@ -77,4 +78,33 @@
         reduce the risk of health problems. Consider consulting a healthcare provider for guidance.</string>
     <string name="bmi_obese_txt">You are obese. It is important to manage your weight to
         reduce the risk of health problems. Consider consulting a healthcare provider for guidance.</string>
+    <string name="grid">Grid</string>
+    <string name="list">List</string>
+    <string name="add_note">Add Note</string>
+    <string name="note_empty">Note is empty.</string>
+    <string name="save">Save</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="delete_note">Delete Note</string>
+    <string name="invalid_note">Title cannot be empty.</string>
+    <string name="more_option">Options</string>
+    <string name="delete_msg">Delete this note?</string>
+    <string name="delete_option">Delete</string>
+    <string name="cancel_option">Cancel</string>
+    <string name="note_title">Note Title</string>
+    <string name="note_content">Note Content.</string>
+    <string name="note_type_gen">General note</string>
+    <string name="note_type_bmi">BMI note</string>
+    <string name="note_type_todo">To-do note</string>
+    <string name="todo_status_unfinished">Unfinished</string>
+    <string name="todo_status_finished">Finished</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_by_title_asc">Title ASC</string>
+    <string name="sort_by_title_desc">Title DESC</string>
+    <string name="sort_by_date_asc">Date ASC</string>
+    <string name="sort_by_date_desc">Date DESC</string>
+    <string name="sort_by_cate_asc">Category ASC</string>
+    <string name="sort_by_cate_desc">Category DESC</string>
+    <string name="sort_by_stat">Status</string>
+    <string name="bmi_save">Save to note</string>
+    <string name="bmi_saved">Saved to note</string>
 </resources>

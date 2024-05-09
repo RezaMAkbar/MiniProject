@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.List
+import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -70,6 +70,7 @@ fun AboutScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_panjang),
                         stringResource(id = R.string.konversi_kecepatan),
                         stringResource(id = R.string.bmi),
+                        stringResource(id = R.string.note_main_menu),
                     )
                     val screens = listOf(
                         Screen.Home,
@@ -77,7 +78,8 @@ fun AboutScreen(navController: NavHostController) {
                         Screen.Weight,
                         Screen.Length,
                         Screen.Speed,
-                        Screen.Bmi
+                        Screen.Bmi,
+                        Screen.Note
                     )
 
                     var expandedTopMenu by rememberSaveable { mutableStateOf(false) }
@@ -87,7 +89,7 @@ fun AboutScreen(navController: NavHostController) {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.List,
+                            imageVector = Icons.Outlined.Menu,
                             contentDescription = stringResource(id = R.string.app_desc),
                             tint = Color.White
                         )
@@ -136,6 +138,11 @@ fun AboutScreen(navController: NavHostController) {
                                         )
                                         5 -> Text(
                                             text = stringResource(R.string.bmi),
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        6 -> Icon(
+                                            painter = painterResource(R.drawable.baseline_notes_24),
+                                            contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
 

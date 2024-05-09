@@ -1,6 +1,7 @@
 package org.d3if3125.miniproject.ui.screen
 
 import android.content.res.Configuration
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,7 +21,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.List
+import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
@@ -46,6 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -55,11 +57,14 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.d3if3125.miniproject.R
+import org.d3if3125.miniproject.database.NoteDb
 import org.d3if3125.miniproject.navigation.Screen
 import org.d3if3125.miniproject.ui.theme.MiniProjectTheme
+import org.d3if3125.miniproject.util.ViewModelFactory
 import kotlin.math.pow
 
 
@@ -92,6 +97,7 @@ fun BmiScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_panjang),
                         stringResource(id = R.string.konversi_kecepatan),
                         stringResource(id = R.string.konversi_berat),
+                        stringResource(id = R.string.note_main_menu),
                         stringResource(id = R.string.about_app),
                     )
                     val screens = listOf(
@@ -100,6 +106,7 @@ fun BmiScreen(navController: NavHostController) {
                         Screen.Length,
                         Screen.Speed,
                         Screen.Weight,
+                        Screen.Note,
                         Screen.About,
                     )
 
@@ -110,7 +117,7 @@ fun BmiScreen(navController: NavHostController) {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.List,
+                            imageVector = Icons.Outlined.Menu,
                             contentDescription = stringResource(id = R.string.app_desc),
                             tint = Color.White
                         )
@@ -158,6 +165,11 @@ fun BmiScreen(navController: NavHostController) {
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
                                         5 -> Icon(
+                                            painter = painterResource(R.drawable.baseline_notes_24),
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        6 -> Icon(
                                             imageVector = Icons.Outlined.Info,
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
@@ -176,6 +188,11 @@ fun BmiScreen(navController: NavHostController) {
 
 @Composable
 fun BMIContent(modifier: Modifier) {
+    val context = LocalContext.current
+    val db = NoteDb.getInstance(context)
+    val factory = ViewModelFactory(db.dao)
+    val viewModel: NoteDetailViewModel = viewModel(factory = factory)
+
     var weightMetric by remember { mutableStateOf("") }
     var weightImp by remember { mutableStateOf("") }
     var weightErrorMetric by remember { mutableStateOf(false) }
@@ -371,6 +388,21 @@ fun BMIContent(modifier: Modifier) {
                 text = stringResource(id = action),
                 style = MaterialTheme.typography.bodyMedium
             )
+            val bmiCategoryText = stringResource(id = getKategori(bmi))
+            val bmiActionText = stringResource(id = getAction(bmi))
+            val bmiText = stringResource(id = R.string.bmi_res, bmi)
+
+            Button(onClick = {
+                Toast.makeText(context, R.string.bmi_saved, Toast.LENGTH_LONG).show()
+                viewModel.insert(
+                    "bmi",
+                    "$bmiText\n$bmiCategoryText\n$bmiActionText",
+                    "1")
+            },
+                modifier = Modifier.padding(top = 8.dp),
+                contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)) {
+                Text(text = stringResource(id = R.string.bmi_save))
+            }
         }
     }
 }

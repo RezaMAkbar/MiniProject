@@ -87,6 +87,13 @@ fun MainMenuContent(modifier: Modifier, navController: NavController) {
         ) {
             Text(text = stringResource(id = R.string.bmi_main_menu))
         }
+        Button(
+            onClick = { navController.navigate(Screen.Note.route) },
+            modifier = Modifier.padding(top = 15.dp),
+            contentPadding = PaddingValues(horizontal = 122.dp, vertical = 16.dp)
+        ) {
+            Text(text = stringResource(id = R.string.note_main_menu))
+        }
     }
 }
 

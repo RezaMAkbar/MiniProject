@@ -22,7 +22,7 @@ import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.List
+import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
@@ -87,6 +87,7 @@ fun LengthScreen(navController: NavHostController) {
                         stringResource(id = R.string.konversi_berat),
                         stringResource(id = R.string.konversi_kecepatan),
                         stringResource(id = R.string.bmi),
+                        stringResource(id = R.string.note_main_menu),
                         stringResource(id = R.string.about_app),
                     )
                     val screens = listOf(
@@ -95,6 +96,7 @@ fun LengthScreen(navController: NavHostController) {
                         Screen.Weight,
                         Screen.Speed,
                         Screen.Bmi,
+                        Screen.Note,
                         Screen.About
                     )
 
@@ -105,7 +107,7 @@ fun LengthScreen(navController: NavHostController) {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.List,
+                            imageVector = Icons.Outlined.Menu,
                             contentDescription = stringResource(id = R.string.app_desc),
                             tint = Color.White
                         )
@@ -152,6 +154,11 @@ fun LengthScreen(navController: NavHostController) {
                                             modifier = Modifier.padding(start = 4.dp)
                                         )
                                         5 -> Icon(
+                                            painter = painterResource(R.drawable.baseline_notes_24),
+                                            contentDescription = null,
+                                            modifier = Modifier.padding(start = 4.dp)
+                                        )
+                                        6 -> Icon(
                                             imageVector = Icons.Outlined.Info,
                                             contentDescription = null,
                                             modifier = Modifier.padding(start = 4.dp)
