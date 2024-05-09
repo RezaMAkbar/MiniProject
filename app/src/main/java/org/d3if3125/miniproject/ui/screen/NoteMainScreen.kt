@@ -293,8 +293,11 @@ fun ScreenContent(showList: Boolean, modifier: Modifier, navController: NavHostC
         5 -> {
             viewModel.cateAsc.collectAsState()
         }
-        else -> {
+        6 -> {
             viewModel.stat.collectAsState()
+        }
+        else -> {
+            viewModel.titleDesc.collectAsState()
         }
     }
 
