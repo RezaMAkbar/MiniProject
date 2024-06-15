@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Board!</string>
+    <string name="main_board">Main Board</string>
+    <string name="refresh">Refresh</string>
+    <string name="profile">Profile</string>
+    <string name="close">Close</string>
+    <string name="logout">Log out</string>
+    <string name="boardName">Board name</string>
+    <string name="createdBy">Created by</string>
+    <string name="text">Text</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="addBoard">Add Board</string>
+    <string name="error">Error</string>
+    <string name="try_again">Try Again</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_text">Are you sure?</string>
+    <string name="board2">Board with id: </string>
+</resources>
